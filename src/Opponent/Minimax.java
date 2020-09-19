@@ -15,6 +15,10 @@ import java.util.*;
 /**
  * Minimax
  *
+ * THIS CLASS IS UNDER CONSTRUCTION
+ * toDo debug Zobrist hash optimization
+ * toDo clean up
+ *
  * <p>
  * Minimax is a search algorithm capable of choosing optimal moves in a zero-sum
  * game. A zero-sum game is one in which the respective gains and losses of the
@@ -336,7 +340,7 @@ public final class Minimax implements MoveStrategy {
                     final Move prev, long nodeHash){
         final boolean isEndGame = isEndGame(board);
         if(depth == 0 || isEndGame){
-            /*if(!isEndGame){
+            if(!isEndGame){
                 if(prev.isAttack()) {
                     final TableEntry nodeEntry = transpositions.get(nodeHash);
                     Move tableMove = MoveFactory.NULL_MOVE;
@@ -346,7 +350,7 @@ public final class Minimax implements MoveStrategy {
                             board, depth - 1, alpha, beta, prev, retaliationMoves, nodeHash
                     );
                 }
-            }*/
+            }
             return evaluator.evaluate(board, depth);
         }
         final TableEntry nodeEntry = transpositions.get(nodeHash);
@@ -395,7 +399,7 @@ public final class Minimax implements MoveStrategy {
                     final Move prev, long nodeHash){
         final boolean isEndGame = isEndGame(board);
         if(depth == 0 || isEndGame){
-            /*if(!isEndGame){
+            if(!isEndGame){
                 if(prev.isAttack()) {
                     final TableEntry nodeEntry = transpositions.get(nodeHash);
                     Move tableMove = MoveFactory.NULL_MOVE;
@@ -405,7 +409,7 @@ public final class Minimax implements MoveStrategy {
                             board, depth - 1, alpha, beta, prev, retaliationMoves, nodeHash
                     );
                 }
-            }*/
+            }
             return evaluator.evaluate(board, depth);
         }
         final TableEntry nodeEntry = transpositions.get(nodeHash);
