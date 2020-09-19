@@ -16,7 +16,7 @@ import java.util.*;
  * Minimax
  *
  * THIS CLASS IS UNDER CONSTRUCTION
- * toDo debug Zobrist hash optimization
+ * toDo debug Zobrist hash optimization, focus on alpha-beta nodes
  * toDo clean up
  *
  * <p>
@@ -325,15 +325,6 @@ public final class Minimax implements MoveStrategy {
         h ^= movedPiece.zobristHash(move.getCurrentCoordinate());
         h ^= movedPiece.zobristHash(move.getDestinationCoordinate());
         return h;
-    }
-
-    private final class Pack {
-        final int score;
-        final Move move;
-        public Pack(final int score, final Move move){
-            this.score = score;
-            this.move = move;
-        }
     }
 
     private int min(final Board board, final int depth, int alpha, int beta,
