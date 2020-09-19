@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import Engine.Player.Player.PlayerType;
 
+//Boilerplate
 public class Setup extends JDialog {
 
     private PlayerType config;

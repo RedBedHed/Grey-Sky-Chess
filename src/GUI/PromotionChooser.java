@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+// Boilerplate
 public class PromotionChooser extends JDialog {
 
     private Piece promotionPiece;

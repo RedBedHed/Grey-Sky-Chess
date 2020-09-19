@@ -66,16 +66,16 @@ public class GameHistoryPanel extends JPanel {
             final Move lastMove = moveLog.getMoves().get(moveLog.size() - 1);
             final String moveText = lastMove.toString();
             if(lastMove.getMovedPiece().getPieceAlliance().isWhite()){
-                this.model.setValueAt(moveText + calculateCheckAndCheckMateHash(board), currentRow, 0);
+                this.model.setValueAt(moveText + generateCheckAndCheckmateSymbol(board), currentRow, 0);
             }else if(lastMove.getMovedPiece().getPieceAlliance().isBlack()){
-                this.model.setValueAt(moveText + calculateCheckAndCheckMateHash(board), currentRow - 1, 1);
+                this.model.setValueAt(moveText + generateCheckAndCheckmateSymbol(board), currentRow - 1, 1);
             }
         }
         final JScrollBar vertical = scrollPane.getVerticalScrollBar();
         vertical.setValue(vertical.getMaximum());
     }
 
-    private String calculateCheckAndCheckMateHash(final Board board) {
+    private String generateCheckAndCheckmateSymbol(final Board board) {
         if(board.currentPlayer().isInCheckMate(board.currentPlayer().hasEscapeMoves())) return "#";
         else if(board.currentPlayer().isInCheck()) return "+";
         return "";
