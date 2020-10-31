@@ -5,5 +5,4 @@ module org.ECM.Chess {
     exports Engine.Board;
     exports Engine.Pieces;
     exports Engine.Player;
-    exports Test;
 }
