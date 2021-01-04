@@ -333,11 +333,10 @@ public final class Board {
 	 * Builder
 	 *
 	 * <p>
-	 * A {@code Builder} is a design pattern that allows for greater specificity
-	 * during the instantiation of a {@code Board}. Taking the place of a long
-	 * and confusing constructor, this {@code Builder} uses specific methods to
-	 * initialize each field of the {@code Board} under construction. This
-	 * {@code Builder} also enables the client to set {@code Piece}s iteratively.
+	 * Taking the place of a long and confusing constructor, a {@code Builder}
+	 * uses specific methods to initialize each field of the {@code Board} under
+	 * construction. A {@code Builder} also enables the client to set {@code Piece}s
+	 * iteratively.
 	 */
 	public static final class Builder {
 

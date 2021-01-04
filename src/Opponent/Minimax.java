@@ -79,7 +79,7 @@ public final class Minimax implements MoveStrategy {
     /*
      * Static Move comparator for use in sorting AttackMoves.
      * This comparator compares two generic Moves. Type must be verified
-     * beforehand in order to avoid a Null Pointer Exception.
+     * beforehand.
      */
     protected static final Comparator<Move> ATTACK_COMPARATOR;
     static {
@@ -369,20 +369,20 @@ public final class Minimax implements MoveStrategy {
                     bestMove = move;
                 }
                 if(beta <= alpha) {
-                    if(nodeEntry == null || nodeEntry.depth < depth || !nodeEntry.keep) {
+                    /*if(nodeEntry == null || nodeEntry.depth < depth || !nodeEntry.keep) {
                         transpositions.put(nodeHash, newEntry = new TableEntry(lowestValue, depth, bestMove));
                         newEntry.type = NodeType.BETA;
-                    }
+                    }*/
                     return lowestValue;
                 }
                 //if(newEntry != null) System.out.println(newEntry.type);
             }
         }
         TableEntry newEntry;
-        if(nodeEntry == null || nodeEntry.depth < depth || !nodeEntry.keep) {
+        /*if(nodeEntry == null || nodeEntry.depth < depth || !nodeEntry.keep) {
             transpositions.put(nodeHash, newEntry = new TableEntry(lowestValue, depth, bestMove));
             if (lowestValue < alpha) newEntry.type = NodeType.ALPHA;
-        }
+        }*/
         return lowestValue;
     }
 
@@ -429,20 +429,20 @@ public final class Minimax implements MoveStrategy {
                     bestMove = move;
                 }
                 if(beta <= alpha) {
-                    if(nodeEntry == null || nodeEntry.depth < depth || !nodeEntry.keep) {
+                    /*if(nodeEntry == null || nodeEntry.depth < depth || !nodeEntry.keep) {
                         transpositions.put(nodeHash, newEntry = new TableEntry(highestValue, depth, bestMove));
                         newEntry.type = NodeType.BETA;
-                    }
+                    }*/
                     return highestValue;
                 }
                 //if(newEntry != null) System.out.println(newEntry.type);
             }
         }
         TableEntry newEntry;
-        if(nodeEntry == null || nodeEntry.depth < depth || !nodeEntry.keep) {
+        /*if(nodeEntry == null || nodeEntry.depth < depth || !nodeEntry.keep) {
             transpositions.put(nodeHash, newEntry = new TableEntry(highestValue, depth, bestMove));
             if (highestValue < alpha) newEntry.type = NodeType.ALPHA;
-        }
+        }*/
         return highestValue;
     }
 
@@ -500,17 +500,18 @@ public final class Minimax implements MoveStrategy {
                                 depth - 1, alpha, beta, move,
                                 orderedAttackMoves(newBoard, tableMove), currentHash
                         );
-                        if(foundEntry == null || foundEntry.depth < depth || !foundEntry.keep) {
+                        /*if(foundEntry == null || foundEntry.depth < depth || !foundEntry.keep) {
                             transpositions.put(currentHash, newEntry = new TableEntry(currentValue, depth, move));
                             if (currentValue < alpha) newEntry.type = NodeType.ALPHA;
-                        }
+                        }*/
                     }
                     if (currentValue <= lowestValue) {
                         lowestValue = currentValue;
                         beta = Math.min(beta, lowestValue);
                     }
                     if(beta <= alpha) {
-                        if(newEntry != null) newEntry.type = NodeType.BETA; return lowestValue;
+                        //if(newEntry != null) newEntry.type = NodeType.BETA;
+                        return lowestValue;
                     }
                     //if(newEntry != null) System.out.println(newEntry.type);
                 }
@@ -549,17 +550,18 @@ public final class Minimax implements MoveStrategy {
                                 depth - 1, alpha, beta, move,
                                 orderedAttackMoves(newBoard, tableMove), currentHash
                         );
-                        if(foundEntry == null || foundEntry.depth < depth || !foundEntry.keep) {
+                        /*if(foundEntry == null || foundEntry.depth < depth || !foundEntry.keep) {
                             transpositions.put(currentHash, newEntry = new TableEntry(currentValue, depth, move));
                             if (currentValue < alpha) newEntry.type = NodeType.ALPHA;
-                        }
+                        }*/
                     }
                     if (currentValue >= highestValue) {
                         highestValue = currentValue;
                         alpha = Math.max(alpha, highestValue);
                     }
                     if(beta <= alpha) {
-                        if(newEntry != null) newEntry.type = NodeType.BETA; return highestValue;
+                        //if(newEntry != null) newEntry.type = NodeType.BETA;
+                        return highestValue;
                     }
                     //if(newEntry != null) System.out.println(newEntry.type);
                 }
@@ -628,16 +630,16 @@ public final class Minimax implements MoveStrategy {
                                 depth - 1, alpha, beta, move,
                                 isDefensive? orderedPawnMoves(newBoard): attackOnPawnMoves(newBoard), currentHash, initiator, !isDefensive
                         );
-                        if(foundEntry == null || foundEntry.depth > depth) transpositions.put(
+                        /*if(foundEntry == null || foundEntry.depth > depth) transpositions.put(
                                 currentHash, new TableEntry(currentValue, depth, move)
-                        );
+                        );*/
                     }
                     if (currentValue <= lowestValue) {
                         lowestValue = currentValue;
                         beta = Math.min(beta, lowestValue);
                     }
                     if(beta <= alpha) {
-                        transpositions.get(currentHash).type = NodeType.BETA;
+                        //transpositions.get(currentHash).type = NodeType.BETA;
                         return lowestValue;
                     }
 
@@ -673,16 +675,16 @@ public final class Minimax implements MoveStrategy {
                                 depth - 1, alpha, beta, move,
                                 isDefensive? orderedPawnMoves(newBoard): attackOnPawnMoves(newBoard), currentHash, initiator , !isDefensive
                         );
-                        if(foundEntry == null || foundEntry.depth > depth) transpositions.put(
+                        /*if(foundEntry == null || foundEntry.depth > depth) transpositions.put(
                                 currentHash, new TableEntry(currentValue, depth, move)
-                        );
+                        );*/
                     }
                     if (currentValue >= highestValue) {
                         highestValue = currentValue;
                         alpha = Math.max(alpha, highestValue);
                     }
                     if(beta <= alpha) {
-                        transpositions.get(currentHash).type = NodeType.BETA;
+                        //transpositions.get(currentHash).type = NodeType.BETA;
                         return highestValue;
                     }
                 }
