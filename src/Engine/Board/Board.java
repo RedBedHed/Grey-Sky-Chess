@@ -78,9 +78,9 @@ public final class Board {
 			this.whitePieces = new ArrayList<>(),
 			this.blackPieces = new ArrayList<>()
 		);
-        this.enPassantPawn = builder.enPassantPawn;
+        	this.enPassantPawn = builder.enPassantPawn;
 		final Collection<Move> whiteStdLegalMoves = calculateLegalMoves(this.whitePieces);
-        final Collection<Move> blackStdLegalMoves = calculateLegalMoves(this.blackPieces);
+        	final Collection<Move> blackStdLegalMoves = calculateLegalMoves(this.blackPieces);
 		this.whitePlayer = new WhitePlayer(
 				this, whiteStdLegalMoves, blackStdLegalMoves,
 				builder.isWhiteCastled, builder.hasWhitePromoted, builder.whitePlayerType
