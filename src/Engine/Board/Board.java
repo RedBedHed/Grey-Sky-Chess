@@ -131,8 +131,8 @@ public final class Board {
 	 * @param blackPieces a {@code Collection} of all {@code Piece}s with a black {@code Alliance}
 	 */
 	private static void populateActivePieces(final List<Tile> gameBoard,
-											 final Collection<Piece> whitePieces,
-											 final Collection<Piece> blackPieces) {
+						 final Collection<Piece> whitePieces,
+						 final Collection<Piece> blackPieces) {
 		for(final Tile tile: gameBoard){
 			if(tile.isTileOccupied()){
 				final Piece piece = tile.getPiece();
@@ -286,7 +286,7 @@ public final class Board {
 	 * @return a standard {@code Board} with all {@code Pieces} in their initial positions
 	 */
 	public static Board generateStandardBoard(final PlayerType whitePlayerType,
-											  final PlayerType blackPlayerType){
+						  final PlayerType blackPlayerType){
 		return new Builder()
 		//Set upper half of the Board with black pieces.
 		.setPiece(Rook.defaultInstance(0, Alliance.BLACK))
@@ -461,7 +461,7 @@ public final class Board {
 		 * @return the instance
 		 */
 		public Builder setHasPromoted(final Player currentPlayer,
-									  final boolean hasPromoted){
+					      final boolean hasPromoted){
 			final boolean isCurrentPlayerWhite = currentPlayer.getAlliance().isWhite();
 			this.hasWhitePromoted = isCurrentPlayerWhite?
 					hasPromoted: currentPlayer.getOpponent().hasPromoted();
@@ -479,7 +479,7 @@ public final class Board {
 		 * @return the instance
 		 */
 		public Builder setHasPromoted(final boolean hasWhitePromoted,
-									  final boolean hasBlackPromoted){
+					      final boolean hasBlackPromoted){
 			this.hasWhitePromoted = hasWhitePromoted;
 			this.hasBlackPromoted = hasBlackPromoted;
 			return this;
@@ -494,7 +494,7 @@ public final class Board {
 		 * @return the instance
 		 */
 		public Builder setPlayerType(final PlayerType whitePlayerType,
-									 final PlayerType blackPlayerType) {
+					     final PlayerType blackPlayerType) {
 			this.whitePlayerType = whitePlayerType;
 			this.blackPlayerType = blackPlayerType;
 			return this;
