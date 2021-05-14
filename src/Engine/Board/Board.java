@@ -20,19 +20,6 @@ import java.util.*;
  * vital to this chess engine and offers a plethora of benefits.
  * Among these are maintainability and reliability.
  *
- * <p>
- * Firstly, immutable design helps to simplify much of the logic
- * involved in moving each {@code Piece} (for both human and A.I.
- * players), guaranteeing concise and clean code throughout the
- * {@code Board}'s clientele and offering better readability and
- * maintainability than mutable design.
- *
- * <p>
- * Secondly, immutable design is widely considered to be safe and
- * reliable. The immutable nature of this {@code Board} serves to
- * encourage immutable practices elsewhere in the engine, helping
- * protect the engine from bugs inherent in mutable code.
- *
  * @author Ellie Moore
  * @author Amir Afghani
  * @version 06.09.2020
